@@ -1,5 +1,8 @@
 package fr.manulep.entrainement;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Series1 {
 	
 	private Series1() {
@@ -9,7 +12,7 @@ public class Series1 {
 
 	public static String helloWorld(String name) { // permet de rappeler la fonction helloWorld du test.java
 		//1
-		if (name == "Manu"){
+		if (name=="Manu"){
 			return "Hello Manu";   /* Si le paramètre de la var helloWorld est = à Manu,
 			on retourne "hello manu", sinon on retourne "hello world". L'intérêt est de rep directement aux 2
 			autres demandes que sont null et blank au lieu de faire plein de lignes*/
@@ -22,7 +25,26 @@ public class Series1 {
 
 	public static String[] removeNullElements(String[] array) {
 		//2
-		return null;
+		String[] out; // on créer directement le tableau string de sortie attendu
+
+		int compteur=array.length; //la var "compteur" va récupérer le nbx de données dans le tableau grâce à .length du array de base
+		for (int i = 0; i < array.length; i++) { //notre boucle va parcourir chq indice du tableau array tant que i est inférieur à la longeur de notre tableau array
+			String valeur = array[i]; // la var "valeur" est égale à l'indice de notre tableau array. Ce n'est pas indispensable de faire cette var, mais c'est + lisible et + facile de la réutiliser par la suite
+			if (valeur==null){ //SI les indices (données/valeurs) du tableau "array" sont = null
+				compteur--; //ALORS on les décompte/remove
+			}
+		}
+		out = new String[compteur]; // on récupère notre tableau de sortie finale auquel on assigne les valeurs de notre compteur (les données du tableaux array, sans les nuls)
+
+		int x = 0; // on créer une var x à 0 pour qu'elle puisse commencer au début du tableau array
+		for (String valeur : array) { // On va parcourir chaque élément du tableau "array" et on va stocker ça dans la variable "valeur"
+			if (valeur !=null) { //en parcourant le tableau, SI la donnée est différent de null
+				out[x] = valeur; // ALORS notre variable tableau OUT du début sera rempli par les données récupérées/contenues dans "valeur"
+				x++; // On indente x car on se sait pas exactement le nombre de valeurs à récupérer
+			}
+		}
+
+		return out; // on return notre tableau de type string créé au début, "out"
 	}
 
 	public static int[] addElementToBeginning(int[] array, int element) {
