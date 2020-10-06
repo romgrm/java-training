@@ -30,7 +30,7 @@ class Series1Test
 	 */
 	@Test
 	void hello() {
-		assertEquals("Hello World", Series1.helloWorld(null), "null name");
+		assertEquals("Hello World", Series1.helloWorld(null), "null name"); //appel de fonction 
 		assertEquals("Hello World", Series1.helloWorld(""), "blank name");
 		assertEquals("Hello Manu", Series1.helloWorld("Manu"), "Manu name");
 	}

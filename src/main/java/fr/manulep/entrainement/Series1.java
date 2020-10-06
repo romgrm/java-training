@@ -7,9 +7,16 @@ public class Series1 {
 	}
 
 
-	public static String helloWorld(String name) {
+	public static String helloWorld(String name) { // permet de rappeler la fonction helloWorld du test.java
 		//1
-		return null;
+		if (name == "Manu"){
+			return "Hello Manu";   /* Si le paramètre de la var helloWorld est = à Manu,
+			on retourne "hello manu", sinon on retourne "hello world". L'intérêt est de rep directement aux 2
+			autres demandes que sont null et blank au lieu de faire plein de lignes*/
+		}else{
+			return "Hello World"; // null && blank
+		}
+		
 	}
 	
 
