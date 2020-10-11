@@ -84,7 +84,7 @@ public class Series1 {
 		//6
 		//String[] arrayA; 
 		for (int i = 0; i < array.length; i++) {
-			char letter = array.charAt(0);
+			char letter = array.charAt(i);
 			if(letter == "A"){
 				letter = i;  
 			}

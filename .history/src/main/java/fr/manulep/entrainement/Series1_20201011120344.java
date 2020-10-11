@@ -82,15 +82,13 @@ public class Series1 {
 	
 	public static String[] selectElementsStartingWithA(String[] array) {
 		//6
-		//String[] arrayA; 
+		String[] arrayA; 
 		for (int i = 0; i < array.length; i++) {
-			char letter = array.charAt(0);
-			if(letter == "A"){
-				letter = i;  
-			}
+			arrayA = Character.toString(array.charAt(0)); 
+				System.out.println(arrayA);
 			}
 		}
-		return letter; 
+		return arrayA; 
 	}
 	
 	public static String[] selectElementsStartingWithVowel(String[]array) {

@@ -67,7 +67,7 @@ public class Series1 {
 		}else{ //on fait l'autre condition pour le premier tableau demandé
 		for (int i = 0; i < array.length; i++) { // loop la longeur de l'ancien tableau
 			newArray = Arrays.copyOfRange(array, 3, array.length); // copie ancien tableau sur new tableau en fonction des index de l'ancien tableau
-			 
+			System.out.println(Arrays.toString(newArray)); 
 		}}
 		return newArray; 
 		
@@ -82,15 +82,7 @@ public class Series1 {
 	
 	public static String[] selectElementsStartingWithA(String[] array) {
 		//6
-		//String[] arrayA; 
-		for (int i = 0; i < array.length; i++) {
-			char letter = array.charAt(0);
-			if(letter == "A"){
-				letter = i;  
-			}
-			}
-		}
-		return letter; 
+		return null;
 	}
 	
 	public static String[] selectElementsStartingWithVowel(String[]array) {
