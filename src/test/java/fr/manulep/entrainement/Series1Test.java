@@ -107,7 +107,7 @@ class Series1Test
 	 */
 	@Test
 	void selectElementsStartingWithVowel() {
-		String arrayIn[] = { "john", "david", "omar", "fred", null, "idris", "angela" };
+		String arrayIn[] = { "john", "david", "omar", "fred",null, "idris", "angela" };
 		String arrayExpected[] = { "omar", "idris", "angela" };
 		assertArrayEquals(arrayExpected, Series1.selectElementsStartingWithVowel(arrayIn));
 	}

@@ -1,8 +1,12 @@
 package fr.manulep.entrainement;
 
-import java.lang.reflect.Array;
+import java.util.List;
+import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.lang.Math;
+import java.util.regex.Matcher;
+import com.google.common.primitives.Chars;
 
 public class Series1 {
 	
@@ -82,72 +86,183 @@ public class Series1 {
 	
 	public static String[] selectElementsStartingWithA(String[] array) {
 		//6
-		//String[] arrayA; 
-		for (int i = 0; i < array.length; i++) {
-			char letter = array.charAt(0);
-			if(letter == "A"){
-				letter = i;  
-			}
+
+		// je déclare mon tableau vide, je ne l'initialise pas car je ne connais pas sa longueur requise
+		String[] arrayA; 
+
+		// compter le nbx de mots commencant par A
+		int nbxMotStartWithA = 0; //on initialise nb pour qu'il parte de 0, sinon il y'aura une error
+		for (String elem : array) { // pour chaque element de mon array
+			if(elem.charAt(0) == 'a'){ // si l'élément commence par 'a' à l'index 0
+				nbxMotStartWithA++; // alors incrémente pour passer d'élements en éléments et connaitre la capacité de notre futur tableau
+				System.out.println("oui"); // permet d'afficher dans la console ceux qui commencent par 'a'
 			}
 		}
-		return letter; 
+
+		// j'initialise mon tableau, je lui donne une valeur (celle de nb, c'est à dire le nbx d'éléments ayant un 'a' en index 0)
+		arrayA = new String[nbxMotStartWithA]; 
+
+		// remplir le tableau (il faut refaire la même boucle qui après nous avoir trouvé la capacité du tableau, elle nous donnera les éléments pour le remplir)
+		int x = 0; //position de base
+		for (int i = 0; i < array.length; i++) {
+			String elem = array[i];  // on fait le tour du tableau et on dit que l'index du tableau (donc les élements) sera stocké dans la var 'elem'
+			if(elem.charAt(0) == 'a') { //si nos élements commencent par 'a' à leur index 0 
+				arrayA[x] = elem; //alors la var elem (ou sont stockés nos élements) iront dans notre nouveau tableau déclaré, avec un [x] pour l'initialiser
+				x++; //on incrémente pour faire le tour du tableau
+			}
+		}
+		return arrayA;
 	}
+
+		/////////////////// ArrayList /////////////////////
+
+		/*String[] retour;
+
+		ArrayList<String> stock = new ArrayList<String>(); 
+
+		for (String mot : array) {
+			if(mot.charAt(0) == 'a'){
+				stock.add(mot);
+			} // c'est le 'mot' qui récupère les élements de notre array avec le foreach, donc normal que se soit lui qui subisse le charAt pour voir quel index de ses éléments débutent avec un 'a'
+		}
+		
+		retour = stock.toArray(new String[stock.size()]); // on convertit l'arrayList String en Array classique 
+		
+		return retour; 
+		}*/
+		 
 	
 	public static String[] selectElementsStartingWithVowel(String[]array) {
 		//7
-		return null;
+		/*public static boolean isVoyelle(char letter){
+			return (letter == 'a' || letter=='e' || letter=='i' || letter=='o' || letter=='u' || letter=='y');
+		}*/
+		
+		
+		
+		// on déclare un new tableau vide
+
+		String[] newTab;  
+
+		/* on initialize capacity pour l'incrémentation partant de 0 
+		afin de déterminer la capacité futur pour notre newtab */
+
+		int capacity = 0; 
+
+		/* on fait une boucle qui va traverser notre array sur chq element
+		Si nos éléments commencent par "a,e,i...", continue d'incrémenter*/
+
+		for (String item : array) {
+			if(item != null){       // permet d'éviter que le 'null' nous bloque dans l'incrémentation
+				if(item.charAt(0)== 'a' || item.charAt(0)=='e'|| item.charAt(0)=='i'|| item.charAt(0)=='o'|| item.charAt(0)== 'u'|| item.charAt(0)== 'y'){
+					capacity++; // on incrémente la capacity pour savoir la capacité de notre newTab "si notre item commence par un 'a', 'o' etc en index 0, alors met le dans notre capacity"
+					System.out.println(item);
+				}
+			}
+		}
+
+		/* on initialise notre newTab en lui donnant la capacity comme ça on sait 
+		combien d'élements doit recevoir notre tableau (en l'occurence 3 vu 
+		qu'il y'a 3 prénoms commencant par des voyelles) */ 
+
+		newTab = new String[capacity]; // notre tableau a une nouvelle entrée avec 3 valeurs (non remplies)
+
+		int x = 0; // on initialise l'index de notre futur tableau
+
+		// on remplie notre tableau vu qu'on sait sa capacité, donc on refait la loop
+
+		for (String item : array) {
+		/* for (int i = 0; i < array.length; i++) {
+			String item = array[i];	
+		}	CA c'est exactement pareil que le paramètre en boocle for each
+		en gros ca permet de dire que notre item est egal à l'index de Array*/
+		
+			if(item != null){
+				if(item.charAt(0)== 'a' || item.charAt(0)=='e'|| item.charAt(0)=='i'|| item.charAt(0)=='o'|| item.charAt(0)== 'u'|| item.charAt(0)== 'y'){ // on refait la loop pour recup les elemt avec voyelle
+					newTab[x] = item; // on remplie nos elements (item) dans notre nvx tableau, grâce à son index [x]
+					x++; // on incrémente pour remplir toutes les cases vides, index par index (3 cases) 	 
+				}
+			}
+		}
+
+
+		return newTab;
 	}
+
+	
 	
 	public static String[] reverseOrderInArray(String[]array) {
 		//8
-		String newArray[]= new string[array];
-		for (String i = 0; i < array.length/2; i++) {
-			newArray = array[i];
-			array[i] = array[array.length -i -1];
-			array[array.length -i -1] = newArray;
-		}
-		return newArray; 
+		// on refait un tableau vide avec le nbx de cases en fonction de notre old array
+		String [] reverse = new String [array.length]; 
+
+		/* on enlève un index pour que les coordonnées (index) de mon tableau 
+		correspondent à la position des éléments (vu que les index partent de 0 alors que le length part de 1) 
+		On aura tjrs ce -1 car sinon on veut remplir le new tableau avec les éléments
+		de l'ancien tableau, il faut lui faire comprendre que 0 n'est pas une valeur int
+		donc on peut pas l'utiliser directement. Avec une loop foreach on a pas ce soucis
+		car ça sélectionne directement chq élément et pas besoin de la longueur du tableau*/
+		int j = array.length-1; 
+		for ( int i = 0 ; i < array.length ; i++ ) {
+			 reverse[i] = array[j]; // mon new tableau est = aux valeurs d'index inversés de mon old tableau
+			 j--; // on incremente mais en sens inverse, on descend pour remplir les cases vides, c'est là ou on inverse l'ordre
+		}return reverse ;
 	}
 
 
 	public static int[] insertElementInTheMiddleOfAnArray(int[] array, int element) {
 		//9 
-		int x[] = {-7, 8, 4, 13}; // les nbx à affecter
-		int pos = array.length/2; // la position du milieu des valeurs de array
-
-		int newArray[] = new int[array+1]; //création d'un nouveau tableau en reprenant le array d'origine avec +1 pour assigner la nouvelle valeur
-
-		for (int i = 0; i < array + 1; i++) {
-			if(i<pos-1){
-				newArray[i]=array[i];
-			}else if(i == pos -1) {
-				newArray[i]=x;
-			}else{
-				newArray[i]=array[i-1];
-			}
-			return newArray; 
+		// Array to ArrayList
+		List<Integer> listClone = new ArrayList<>(); // on créer un nouvel ArrayList
+		for (int num : array){
+			listClone.add(num); // on clone le array de base dans notre nouvel ArrayList
 		}
 
-
-		//int newArray[] = new int[array+1]; // nouveau array qui reprend le array de base avec +1
-		int newArray = insertElementInTheMiddleOfAnArray(array, newArray, x, pos);
+		// Find the index of position and insert element
+		int middleArray = Math.round(array.length/2); // on trouve le milieu de notre array (length/2) et la fonction round permet de ramener à l'entier précédent (pour les tableaux impair)
+				listClone.add(middleArray, element); // on ajoute à notre nouvel ArrayList (lisClone) nos éléments à ajouter (8,-7,4...), en fonction de notre middleArray (donc l'index au milieu du tab)
+				
+		// Convert ArrayList to Array		
+		int [] newArray = new int[listClone.size()]; // on créer un newArray avec comme taille la size de notre ArrayList listClone
+		for (int i = 0 ; i < newArray.length; i++){ // parcours la longueur de notre Array
+			newArray[i] = listClone.get(i); // on dit que les elements de notre ArrayList (listClone) vont dans notre newArray, aux mêmes index. 
+		}
 		return newArray; 
 	}
 
 	public static String shortestWord(String text) {
 		//10
-		String shortest; 
-		for (String i = 0; i < text.length(); i++) {
-			if(i < 3){
-				shortest=i; 
+		int length =100; // filet de peche pour prendre tt les mots possible 
+		String [] mots = text.split(" "); // permet de mettre "winter is coming" dans un array avec un index chacun, (winter =0 etc...), important de mettre " " (l'espace) pour pas que les mots soient collés
+		String shortestWord= ""; // on initialise pour pas que java gueule 
+
+		for (String word : mots){
+			if(word.length() < length){ // On compare la longueur de nos mots (winter, is...) par rapport à l'int length, si c plus petit alors exe
+				length = word.length(); /*notre filet "length" prend la valeur de la longueur du word, 
+				donc length=100 devient length=6 (winter), puis second tour, 
+				on compare la longueur de notre word.lenght (is) comparé à celle de length, 
+				et donc is de vient notre + petit mot etc...*/
+				shortestWord = word; // on stock notre + petit mot dans notre shortestWord 
 			}
 		}
-		return shortest; 
-	}
+		return shortestWord; 
+		}
+		
+	
 
 	public static String removeCapitals(String text) {
 		//11
-		
+		// on déclare une string vide 
+		String notCapital= ""; 
+		// on boucle sur la longueur de notre var text pour tte la parcourir
+		for (int i = 0; i < text.length(); i++) {
+			// notre char letter recupere les infos de notre var text en fonction de ses index
+			char letter = text.charAt(i);
+			if(!Character.isUpperCase(letter)){ // si letter à l'inverse d'une majuscule dans ses index
+				notCapital += letter; // alors notCapital prend la valeur de letter
+			}
+		}
+		return notCapital; // ça nous à donc garder que les minuscules 
 	}
 	
 	public static long addingTwoNumbers(long number1, long number2) {
@@ -164,6 +279,17 @@ public class Series1 {
 
 	public static long addingSeveralNumbers(final Integer... numbers) {
 		//14
+
+		// on créer une var vide pour stocker les chiffres de l'ancien integer
+		int severalNumbers = 0; 
+
+		// on fait une loop qui va traverser tout nos elements de notre numbers
+		for (int i = 0; i < numbers.length; i++) {
+			severalNumbers += numbers[i]; // on ajoute les index de 'numbers' à "severalNumbers" 
+			System.out.println(severalNumbers);
+		}
+
+		return severalNumbers; 
 	}
 
 	public static float makeNegative(float number) {
@@ -176,12 +302,49 @@ public class Series1 {
 
 	public static boolean checkForSpecialCharacters(String string) {
 		//16
-		return false;
-	}
+		// on intègre le pattern suivant avec les caractères spéciaux
+		Pattern special = Pattern.compile("[@#$%&*()_+=|<>?{}\\[\\]~-]");
+		// on fait matcher le pattern au matcher de string(notre var)
+		Matcher hasSpecial = special.matcher(string);
+
+		/* si le pattern match (donc si il y'a un de ces caractère dans notre string),
+		tu retournes true, sinon tu return false*/
+
+		return hasSpecial.find();
+		}
+
+	
 
 	public static boolean checkIfStringStartsWithConsonant( String word ) {
-		//17
-		return false;
+		//17 
+
+		// Creation d'une var qui va contenir l'index 0 de la var "Word", autrement dit la 1ere lettre
+		String firstLetter = word.substring(0,1); 
+		System.out.println(word);
+		System.out.println(firstLetter);
+
+		// Si les mots "aei...." sont contenues dans ma var "firstLetter"
+		if("aeiouyAEIOUY".contains(firstLetter)){
+			return false; // alors return false (car se sont des voyelles et nous on veut les consonnes)
+		}else{
+			return true; // sinon return true, comme ça on recup tout les mots commençant par une consonne
+		}
+
+		//////// 2eme METHODE AVEC IF /////////
+		/*Boolean consonantWord; 
+		if(word.startsWith("a") || word.startsWith("e") || word.startsWith("i") || word.startsWith("o") || word.startsWith("u") || word.startsWith("y")
+		||word.startsWith("A") || word.startsWith("E") || word.startsWith("I") || word.startsWith("O")|| word.startsWith("U")|| word.startsWith("Y")){
+			consonantWord=false; 
+		}else{
+			consonantWord= true; 
+		}
+		System.out.println(consonantWord);
+		return consonantWord;*/
+		
+
+		
+
+		
 	}
 
 	public static String getDomainName(String email) {
@@ -191,16 +354,40 @@ public class Series1 {
 
 	public static int[] letterPosition(String name) {
 		//19
-		return null;
+		// on convertit tout notre name en minuscule qu'on stock ds une string pour pas avoir de soucis
+		String lowerCaseName = name.toLowerCase(); 
+
+		// on créer un tableau de char avec toutes les lettres de l'alphabet
+		char [] alphabet = {' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		
+		//on créer un nouveau tableau de integer avec comme longueur le nbx d'élement de notre string (donc chq index de hellokitty)
+		int[] letterPosition = new int[lowerCaseName.length()];
+		
+		//on fait le tour de notre string lowercase
+		for (int i = 0; i < lowerCaseName.length(); i++ ){
+			// la char target reprend les index de notre string lowerCase, donc les index de hellokitty
+			char target = lowerCaseName.charAt(i);
+			// ça nous donne l'index de notre texte (hellokitty) en fonction de l'alphabet. On connait donc la position de chq lettre de hellokitty dans l'alphabet
+			int index = Chars.indexOf(alphabet,target);
+			// on remplie letter position (notre tableau vide à la longueur de hellokitty) en fonction des résultats de notre int index
+			letterPosition[i] = index;
+			System.out.println(Arrays.toString(letterPosition));
+		}
+		return letterPosition;
 	}
 
 	public static boolean isPeer(int number) {
 		//20
+		// on créer un boolean vide qui va permettre de savoir si c'est true / false
+		
 		boolean isPeer;
-		while(number==0){
-			number=isPeer;
-		}
-		 
+
+		// Si notre nbx, modulo de 2 = 0, alors c'est paire, donc notre var = true
+		if(number%2==0){
+				isPeer = true;
+			}else{      // sinon c'est false 
+				isPeer=false;  
+			}		 
 		return isPeer;	
 		
 	}	
