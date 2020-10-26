@@ -365,10 +365,10 @@ public class Series1 {
 		
 		//on fait le tour de notre string lowercase
 		for (int i = 0; i < lowerCaseName.length(); i++ ){
-			// la char target reprend les index de notre string lowerCase, donc les index de hellokitty
+			// la char target reprend les index de notre string lowerCase, donc les index de hellokitty, à un instant T, qui changera à chq loop
 			char target = lowerCaseName.charAt(i);
 			// ça nous donne l'index de notre texte (hellokitty) en fonction de l'alphabet. On connait donc la position de chq lettre de hellokitty dans l'alphabet
-			int index = Chars.indexOf(alphabet,target);
+			int index = Chars.indexOf(alphabet,target); // loop 2 -> target = "e", indexOf recherche la lettre "e" dans le tableau Alphabet, le trouve à la 5eme position, donc index = 5
 			// on remplie letter position (notre tableau vide à la longueur de hellokitty) en fonction des résultats de notre int index
 			letterPosition[i] = index;
 			System.out.println(Arrays.toString(letterPosition));
