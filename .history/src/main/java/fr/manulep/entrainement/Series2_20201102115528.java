@@ -58,9 +58,7 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
-		Collections.reverse(elements);
-		System.out.println(elements);
-		return elements;
+		return new ArrayList<>();
 	}
 
 	public static List<Integer> swapFirstandLastElement(List<Integer> elements) {
@@ -137,54 +135,32 @@ public class Series2 {
 
 	public static boolean isOrder(int... number) {
 
-		// ArrayList 
 		List<Integer> emptyArray = new ArrayList<Integer>();
-		List<Integer> compareArray = new ArrayList<Integer>();
-		
-		boolean result = false;
-
-		// Ajout des données à notre emptyArray
+		boolean result= false;
 		for (Integer num : number) {
 			emptyArray.add(num);
-			compareArray.add(num);	
+			System.out.println(emptyArray);
 		}
-		// on strike les tableaux qui ont pas assez d'éléments 
-		if(emptyArray.size() < 2){
-			result = true; 
-		}
-		// Comparaison pour les tableaux croissants
-		else if(emptyArray.get(0) < emptyArray.get(1)){
-			Collections.sort(compareArray);
-		
-			if(emptyArray.equals(compareArray)){
-				result = true; 
-			}else if(emptyArray != compareArray){
-				result = false; 
-			}
-		}
-		// Comparaison pour les tableaux décroissants
-		else if(emptyArray.get(0) > emptyArray.get(1)){
-			Collections.sort(compareArray, Collections.reverseOrder());
+		Collections.sort(emptyArray);
+		// croissant
+		if(emptyArray.get(0) < emptyArray.get(1)){
+			for (Integer numCroi : emptyArray) {
+				
+				System.out.println(numCroi);
+			} 
+		}else if(emptyArray.get(0) > ){
 
-			if(emptyArray.equals(compareArray)){
-				result=true;
-			}else if(emptyArray != compareArray){
-				result = false; 
-			}
 		}
-		
-		//System.out.println(result);
+
 		return result; 
 	}
 
 	public static Float intToFloat(int number) {
-		float a = (float) number;
-		return a; 
+		return null;
 	}
 
 	public static Integer floatToInt(float number) {
-		int a = (int) number; 
-		return a; 
+		return null;
 	}
 
 	public static String dateToString(LocalDate date, String format) {

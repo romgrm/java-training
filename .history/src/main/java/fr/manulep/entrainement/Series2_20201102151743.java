@@ -58,6 +58,8 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
+		//List<Integer> reverseArray = new ArrayList<Integer>();
+
 		Collections.reverse(elements);
 		System.out.println(elements);
 		return elements;

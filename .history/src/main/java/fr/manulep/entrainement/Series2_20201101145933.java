@@ -3,9 +3,8 @@ package fr.manulep.entrainement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.math.*;
+import java.util.*; 
 
 public class Series2 {
 	
@@ -58,9 +57,7 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
-		Collections.reverse(elements);
-		System.out.println(elements);
-		return elements;
+		return new ArrayList<>();
 	}
 
 	public static List<Integer> swapFirstandLastElement(List<Integer> elements) {
@@ -105,86 +102,56 @@ public class Series2 {
 
 	public static boolean isPeerSum(final int... numbers) {
 		
-		boolean resultat = false; 
-		int num = 0; 
+		int sumOfNumbers = 0;
 
 		for (int i = 0; i < numbers.length; i++) {
-			num += numbers[i];
+			sumOfNumbers += numbers[i]; 
+			System.out.print(sumOfNumbers);
 		}
+		
+		/*List<Integer> arrayEmpty = new ArrayList<Integer>();
+		
+		// faire une boucle pour récupérer les élements
+		for (int num : numbers) {
+			arrayEmpty.add(num);   
+			System.out.print(arrayEmpty);
+		}
+		int sum = 0;
+		for (Integer i : arrayEmpty) {
+			sum += i; 
+			System.out.print(sum);
+		}
+		/*
+		int sum = 0; 
+		for (int i = 0; i < arrayEmpty.size(); i++) {
+			sum += arrayEmpty.get(i); 
+			System.out.print(sum);
 
-		if(num%2 == 0){
-			resultat = true;
-		}
-		return resultat; 
+			if(sum%2 == 0){
+				 
+			}else{
+				return false; 
+			}
+		}*/
+		return true;
+		// faire la somme de ces élements 
+		// si modulo de la somme est == 0 , donc tu es pair et donc tu renvoies true 
 	}
 
 	public static boolean isRightTriangle(int side1, int side2, int side3) {
-		Boolean result = false;
-		// function math.pow qui permet de prendre le cote(side1) et de le faire au carré (2)
-        int powerSide1 = (int)Math.pow(side1, 2); 
-        int powerSide2 = (int)Math.pow(side2, 2);
-        int powerSide3 = (int)Math.pow(side3, 2);
-
-		//application du theoreme de pythagore (si un cote est = a la somme des 2 autres cote)
-        if (powerSide1 == powerSide2 + powerSide3 
-         || powerSide2 == powerSide1 + powerSide3 
-         || powerSide3 == powerSide1 + powerSide2){
-            result = true;
-        }
-
-        return result;
+		return false;
 	}
 
 	public static boolean isOrder(int... number) {
-
-		// ArrayList 
-		List<Integer> emptyArray = new ArrayList<Integer>();
-		List<Integer> compareArray = new ArrayList<Integer>();
-		
-		boolean result = false;
-
-		// Ajout des données à notre emptyArray
-		for (Integer num : number) {
-			emptyArray.add(num);
-			compareArray.add(num);	
-		}
-		// on strike les tableaux qui ont pas assez d'éléments 
-		if(emptyArray.size() < 2){
-			result = true; 
-		}
-		// Comparaison pour les tableaux croissants
-		else if(emptyArray.get(0) < emptyArray.get(1)){
-			Collections.sort(compareArray);
-		
-			if(emptyArray.equals(compareArray)){
-				result = true; 
-			}else if(emptyArray != compareArray){
-				result = false; 
-			}
-		}
-		// Comparaison pour les tableaux décroissants
-		else if(emptyArray.get(0) > emptyArray.get(1)){
-			Collections.sort(compareArray, Collections.reverseOrder());
-
-			if(emptyArray.equals(compareArray)){
-				result=true;
-			}else if(emptyArray != compareArray){
-				result = false; 
-			}
-		}
-		
-		//System.out.println(result);
-		return result; 
+		return false;
 	}
 
 	public static Float intToFloat(int number) {
-		float a = (float) number;
-		return a; 
+		return null;
 	}
 
 	public static Integer floatToInt(float number) {
-		int a = (int) number; 
-		return a; 
+		return null;
 	}
 
 	public static String dateToString(LocalDate date, String format) {

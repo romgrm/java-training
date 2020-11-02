@@ -58,9 +58,7 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
-		Collections.reverse(elements);
-		System.out.println(elements);
-		return elements;
+		return new ArrayList<>();
 	}
 
 	public static List<Integer> swapFirstandLastElement(List<Integer> elements) {
@@ -178,12 +176,11 @@ public class Series2 {
 	}
 
 	public static Float intToFloat(int number) {
-		float a = (float) number;
-		return a; 
+		return null;
 	}
 
 	public static Integer floatToInt(float number) {
-		int a = (int) number; 
+		Integer a = Math.round(number); 
 		return a; 
 	}
 

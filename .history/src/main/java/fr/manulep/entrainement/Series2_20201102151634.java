@@ -58,9 +58,11 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
-		Collections.reverse(elements);
+		List<Integer> reverseArray = new ArrayList<Integer>();
+
+		Collections.sort(elements, Collections.reverseOrder());
 		System.out.println(elements);
-		return elements;
+		return reverseArray;
 	}
 
 	public static List<Integer> swapFirstandLastElement(List<Integer> elements) {

@@ -58,9 +58,7 @@ public class Series2 {
 	}
 	
 	public static List<Integer> reverseOrder(List<Integer> elements) {
-		Collections.reverse(elements);
-		System.out.println(elements);
-		return elements;
+		return new ArrayList<>();
 	}
 
 	public static List<Integer> swapFirstandLastElement(List<Integer> elements) {
@@ -148,12 +146,8 @@ public class Series2 {
 			emptyArray.add(num);
 			compareArray.add(num);	
 		}
-		// on strike les tableaux qui ont pas assez d'éléments 
-		if(emptyArray.size() < 2){
-			result = true; 
-		}
 		// Comparaison pour les tableaux croissants
-		else if(emptyArray.get(0) < emptyArray.get(1)){
+		if(emptyArray.get(0) < emptyArray.get(1)){
 			Collections.sort(compareArray);
 		
 			if(emptyArray.equals(compareArray)){
@@ -161,9 +155,7 @@ public class Series2 {
 			}else if(emptyArray != compareArray){
 				result = false; 
 			}
-		}
-		// Comparaison pour les tableaux décroissants
-		else if(emptyArray.get(0) > emptyArray.get(1)){
+		}else if(emptyArray.get(0) > emptyArray.get(1)){
 			Collections.sort(compareArray, Collections.reverseOrder());
 
 			if(emptyArray.equals(compareArray)){
@@ -178,13 +170,11 @@ public class Series2 {
 	}
 
 	public static Float intToFloat(int number) {
-		float a = (float) number;
-		return a; 
+		return null;
 	}
 
 	public static Integer floatToInt(float number) {
-		int a = (int) number; 
-		return a; 
+		return null;
 	}
 
 	public static String dateToString(LocalDate date, String format) {
